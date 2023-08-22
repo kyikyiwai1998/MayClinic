@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
-const Header = () => {
+type HeaderPropsType = {
+  handleOnClick: () => void;
+};
+const Header = ({ handleOnClick }: HeaderPropsType) => {
   return (
     <div
       style={{
@@ -63,6 +66,7 @@ const Header = () => {
           </div>
           <div>
             <button
+              onClick={handleOnClick}
               style={{
                 background: "#54BAB9",
                 color: "white",

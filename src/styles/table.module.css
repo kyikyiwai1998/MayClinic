@@ -22,10 +22,29 @@
 .more {
   position: relative;
 }
-.table button {
+.button1 {
   display: none;
   position: absolute;
   z-index: 1;
   bottom: 0;
   right: 0;
+}
+.edit_btn,
+.delete_btn {
+  display: block;
+  color: black;
+  border: 1px solid lightgrey;
+  padding: 2px 15px;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100px;
+  text-align: center;
+}
+.more:hover .button1 {
+  display: block;
+}
+.delete_btn:hover,
+.edit_btn:hover {
+  background-color: #54bab9;
 }

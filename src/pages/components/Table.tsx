@@ -1,34 +1,16 @@
 import Image from "next/image";
 import style from "../../styles/table.module.css";
-
-type TableDataType = {
-  id: number;
-  petName: string;
-  status: string;
+import { TableDataType1 } from "..";
+type TableDataPropsType = {
+  tableData: TableDataType1[];
+  handleOnDelete: (val: TableDataType1) => void;
+  handleOnUpdate: (val: TableDataType1) => void;
 };
-
-interface TableDataType1 extends TableDataType {
-  pawrent: string;
-  gender: "Male" | "Female";
-  breed: string;
-  dateOfBirth: string;
-  contactPhoneNo: string | number;
-  address?: string;
-}
-const Table = () => {
-  const tableData: TableDataType1[] = [
-    {
-      id: 1,
-      petName: "Milo",
-      status: "allergy",
-      pawrent: "The Nu San",
-      breed: "Beagle",
-      gender: "Female",
-      dateOfBirth: "1.5.2021",
-      contactPhoneNo: 9797122499,
-      //   address: "Yangon",
-    },
-  ];
+const Table = ({
+  tableData,
+  handleOnDelete,
+  handleOnUpdate,
+}: TableDataPropsType) => {
   return (
     <div>
       <table className={style.table}>
@@ -78,24 +60,40 @@ const Table = () => {
                       height={20}
                       alt=""
                     />
-                    <div>
-                      <button>
+                    <div className={style.button1}>
+                      <button
+                        onClick={() => {
+                          handleOnUpdate(val);
+                        }}
+                        className={style.edit_btn}
+                      >
                         {
                           <Image
+                            style={{
+                              marginRight: "5px",
+                            }}
                             src="/edit.png"
-                            width={10}
-                            height={10}
+                            width={20}
+                            height={20}
                             alt=""
                           />
                         }
                         Edit
                       </button>
-                      <button>
+                      <button
+                        onClick={() => {
+                          handleOnDelete(val);
+                        }}
+                        className={style.delete_btn}
+                      >
                         {
                           <Image
+                            style={{
+                              marginRight: "5px",
+                            }}
                             src="/delete.png"
-                            width={10}
-                            height={10}
+                            width={20}
+                            height={20}
                             alt=""
                           />
                         }
